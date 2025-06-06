@@ -45,6 +45,21 @@
         function showMessage() {
             alert('Hello! This is your proof of concept demo working! 🎉');
         }
+
+        // Dynamic background color based on mouse position
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Convert mouse position to HSL color values
+            const hue = Math.floor(x * 360);
+            const saturation = Math.floor(50 + (y * 30));
+            const lightness = Math.floor(40 + (x * 20));
+            
+            document.body.style.background = `linear-gradient(135deg, 
+                hsl(${hue}, ${saturation}%, ${lightness}%) 0%, 
+                hsl(${(hue + 60) % 360}, ${saturation + 10}%, ${lightness + 10}%) 100%)`;
+        });
     </script>
 </body>
 </html>
